@@ -1,28 +1,50 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Model to represent a Menu item in the restaurant
-class Menu(models.Model):
-    # Name of the dish
-    name = models.CharField(max_length=100)
-    # Detailed description of the dish
-    description = models.TextField()
-    # Price of the dish (max_digits=8, decimal_places=2)
-    price = models.DecimalField(max_digits=8, decimal_places=2)
-
-    # String representation of the model (shown in admin and elsewhere)
-    def __str__(self):
-        return self.name
-
-# Model to represent a customer's order
+# Assuming Menu model is defined elsewhere in your app
 class Order(models.Model):
-    # ForeignKey links each order to a specific menu item
-    menu_item = models.ForeignKey(Menu, on_delete=models.CASCADE)
-    # Quantity ordered
-    quantity = models.PositiveIntegerField(default=1)
-    # Timestamp when the order was created (auto-set on creation)
-    order_time = models.DateTimeField(auto_now_add=True)
+    # Link to the user who placed the order
+    customer = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="Customer"
+    )
 
-    # String representation showing quantity and menu item name
+    # Many-to-many relationship with Menu items (order can have multiple dishes)
+    order_items = models.ManyToManyField(
+        'Menu',
+        verbose_name="Order Items"
+    )
+
+    # Total price of the order
+    total_amount = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        verbose_name="Total Amount"
+    )
+
+    # Choices for the current status of the order
+
+    STATUS_CHOICES =[
+        ('PENDING', 'Pending'),
+        ('PROCESSING', 'Processing'),
+        ('COMPLETED', 'Completed'),
+        ('CANCELLED', 'Cancelled'),
+    ]
+
+    order_status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='PENDING',
+        verbose_name="Order Status"
+    )
+
+    # Automatically store the datetime when the order was created
+    order_time = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name="Order Time"
+    )
+
     def __str__(self):
-        return f"{self.quantity} * {self.menu_item.name}"
-
+        # Display useful info about the order
+        return f"Order #{self.id} by {self.customer.username} - {self.order_status}"
