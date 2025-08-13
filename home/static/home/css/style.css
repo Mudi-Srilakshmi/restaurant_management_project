@@ -1,0 +1,84 @@
+/* ==================================
+    style.css - Home Page Styles
+    Author: SriLakshmi Mudi (Bangaram)
+    Purpose: Styling for the Home Page
+    ================================= */
+
+    /* ==== 1. General Page Styling ==== */
+    /* Sets default font, removes browser margins, sets a light background */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color:#f4f4f9;
+    }
+
+    /* ==== 2. Header Section ==== */
+    /* Creates a colored bar at the top of the page */
+    header {
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        text-align: center; /* Centers text horizontally */
+        padding: 20px; /* Space inside header */
+        font-size: 24px; /* Bigger header text */
+    }
+
+    /* ==== 3. Navigation Menu ==== */
+    /* Styles a simple horizontal menu */
+    nav ul {
+        list-style-type: none; /* Removes bullet */
+        margin: 0;
+        padding: 0;
+        background-color: #333; /* Dark menu background */
+        overflow: hidden;
+    }
+       
+    nav ul li {
+        float: left; /* Places menu items side-by-side */
+    }
+    nav ul li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none; /* Removes background when hovered */
+    }
+    nav ul li a:hover {
+        background-color: #111; /* Darker background when hovered */
+    }
+
+    /* ==== 4. Main Content ==== */
+    /* Centers content and limits width */
+    main {
+        padding: 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    /* ==== 5. Buttons ==== */
+    /* Styles all buttons on the page */
+    button {
+        background-color: #4CAF50; /* Green button */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer; /* Pointer cursor on hover */
+        border-radius: 5px; /* Rounded corners */
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+
+    /* ==== 6. Footer ==== */
+    /* Creates a fixed section at the bottom */
+    footer {
+        background-color: #333; /* Dark background */
+        color: white; /* White text */
+        text-align: center;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+
+  
