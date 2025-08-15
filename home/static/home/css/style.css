@@ -1,1 +1,36 @@
-ddsaskjsojsisjsijfaklfjcslfvjslzfjc
+/* ============================
+    404 Page Specific Styles
+    =========================== */
+
+/* Centers the error message */
+.error-container {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Big 404 number */
+.error-container h1 {
+    font-size: 100px;
+    color: #4CAF50;
+    margin: 0;
+}
+
+/* Error message text */
+.error-container p {
+    font-size: 20px;
+    color: #555;
+}
+
+/* Button style (reuse from your existing button style) */
+.error-container .btn {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.error-container .btn:hover {
+    background-color: #45a049;
+}
