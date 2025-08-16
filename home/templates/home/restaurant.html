@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Our Restaurant</title>
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+
+    <!-- ==== Header Section ==== -->
+    <header>
+        <h1>About Our Restaurant</h1>
+    </header>
+
+    <!-- ==== Main Content ==== -->
+    <main>
+        <p>
+            Welcome to <strong>Bangaram's Delight</strong> - where taste meets traditional!
+            We serve delicious, freshly prepared dishes with a touch of love.
+            From crispy starters to mouth-watering main courses, every bite will make you feel at home.
+        </p>
+
+        <img src="{% static 'home/images/restaurant.jpg' %}" alt="Our Restaurant" style="max-width:100%; height:auto; border-radius:10px; margin-top:20px;">
+    </main>
+
+    <!-- ==== Footer Section ==== -->
+    <footer>
+        &copy; 2025 Bangaram's Delight. All rights reserved.
+    </footer>
+</body>
+</html>
