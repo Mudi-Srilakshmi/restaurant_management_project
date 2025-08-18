@@ -1,47 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!-- The above line loads Django's static files system, so we can use images, CSS, JS stored inside the 'static' folder -->
+
+<!COCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Restaurant Management</title>
 </head>
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333;">
+<body>
+    <!-- =============================== LOGO SECTION =========================
+    <!-- This div will keep the logo centered and with some space at the top -->
+    <div style="text-align:center; margin-top:20px;">
 
-    <!-- Header -->
-    <header style="background-color: #4CAF50; padding: 20px; text-align: center; color: white;">
-        <h1 style="margin: 0;">Welcome to Bangaram's Delight</h1>
-        <p style="margin: 5px 0;">Where taste meets tradition </p>
-    </header>
+        <!-- The 'static' template tag is used to load the image from the static folder -->
+        <!-- Make sure you place logo at: orders/static/orders/images/logo.png -->
+        <img src="{% static 'orders/images/logo.png' %}"
+            alt="Restaurant Logo"
+            style="width:200px; height:auto;">
+        <!-- 'alt is displayed if the image is not found, and 'style' makes the logo size adjustable -->
+    </div>
+    <!-- ================================ END OF LOGO SECTION ====================
 
-    <!-- Naigation -->
-    <nav style="background-color: #333; padding: 10px; text-align: center;">
-        <a href="/" style="color: white; margin: 0 15px; text-decoration: none;">Home</a>
-        <a href="/restaurant/" style="color: white; margin: 0 15px; text-decoration: none;">About Restaurant</a>
-        <a href="/contact/" style="color: white; margin: 0 15px; text-decoration: none;">Contact</a>
-
-    </nav>
-
-    <!-- Main Content -->
-    <main style="padding: 20px; text-align: center;">
-        <h2 style="color: #4CAF50;">Delicious food made with love </h2>
-        <p style="max-width: 600px; margin: 10px auto; line-height: 1.6;">
-            At <strong>Bangaram's Delight</strong>, we serve a variety of dishes orepared fresh every day.
-            From crispy starters to rich curries, our menu is crafted to satisfy your cravings.
-        </p>
-        <img src="https://source.unsplash.com/600*300/?restaurant, food"
-            alt="Restaurant Image"
-            style="max-width: 100%; border-radius: 10px; margin-top: 15px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);">
-    </main>
-
-    <!-- Footer -->
-    <footer style="background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 20px;">
-        &copy; 2025 Bangaram's Delight. All rights reserved.
-    </footer>
+    <!-- ================================ WELCOME MESSAGE =======================
+    <!-- Centered heading to greet users -->
+    <h1 style="text-align:center;">Welcome to our Restaurant!</h1>
+    <!-- ================================== END OF WELCOME MESSAGE ==============
 </body>
 </html>
-
-
-
-
-        
-
