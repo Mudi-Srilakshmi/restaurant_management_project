@@ -3,8 +3,9 @@ from django.shortcuts import render
 
 def home(request):
     context = {
-        'restaurant_name': settings.RESTAURANT_NAME 
+        "restaurant_name": "My Restaurant",
+        "phone_number": settings.RESTAURANT_PHONE,
     }
-    return render(request, 'home/home.html', context)
-
+    return render(request, "home/home.html", context)
     
+        
