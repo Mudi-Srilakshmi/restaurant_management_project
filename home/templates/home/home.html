@@ -1,53 +1,22 @@
-<!-- ============ home.html (Homepage Template) ========= -->
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Sets the character encoding for the page -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ensures mobile responsiveness -->
-    <title>Home - My Restaurant</title> <!-- Title shown in the browser tab -->
-
-    <!-- ======= Internal CSS Styling ==== -->
-    <style>
-        /* Style for the entire page */
-        body {
-            font-family: Arial, Sans-serif; /* Clean and professional font */
-            background-color: #f4f4f9; /* Light background for a neat look */
-            margin: 0; /* Removes default browser magin */
-            padding: 0; /* Removes default padding */
-            text-align: center; /* Centers text content */
-        }
-
-        /* Container that holds all content */
-        .container {
-            margin-top: 100px; /* pushes content down from the top */
-        }
-
-        /* Heading style */
-        h1 {
-            font-size: 36px; /* Larger font for restaurant name */
-            color: #333;/* Dark text for better readability */
-        }
-
-        /* Welcome message style */
-        p {
-            font-size: 20px; /* Slightly larger than normal text */
-            color: #555; /* Softer gray for paragraph text */
-            margin-top: 20px; /* Adds space between heading and paragraph */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Home - My Restaurant</title>
 </head>
 <body>
+    <header>
+        <h1>{{ restaurant_name }}</h1>
+        <p>Welcome to our restaurant!</p>
+    </header>
 
-    <!-- ======== Homepage Content ======= -->
-    <div class="container">
-        <!-- Restaurant Name -->
-        <h1> My Restaurant</h1>
+    <main>
+        <p>Enjoy the best food in town.</p>
+    </main>
 
-        <!-- Welcome Message -->
-        <p>Welcome to our restaurant! We're glad to serve you.</p>
-    </div>
-
+    <footer>
+        <p>&copy; {% now "Y" %} My Restaurant. All rights reserved.</p>
+        <p> contact: {{ phone_number }}</p> <!-- phone number displayed -->
+    </footer>
 </body>
 </html>
-
-      
