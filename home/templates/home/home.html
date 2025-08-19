@@ -1,86 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Homepage</title>
-    
-    <!-- Inline CSS Styling Section -->
-    <style>
-        /* ======= General Body Styling ===== */
-        body {
-            font-family: Arial, Helvetica, sans-serif; /* Set font style */
-            background-color: #f4f6f9; /* Light grey background */
-            color: #333; /* Default text color */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-        }
+<!-- ========= Footer Section ======== -->
+<footer>
+    <p>&copy; <span id="year"></span> mywebsite. All rights reserved.</p>
+</footer>
 
-        /* ======= Header Section =======*/
-        header {
-            background-color: #4CAF50; /* Green background for header */
-            color: white; /* Center text color */
-            text-align: center; /* Center align text */
-            padding: 20px; /* Add space inside header */
-        }
+<!-- ========= Footer CSS ======== -->
+<style>
+    footer {
+        background-color: #4CAF50; /* Same green as header */
+        color: white; /* White text */
+        text-align: center; /* Center text */
+        padding: 15px 0; /* Top & bottom padding */
+        position: relative;
+        bottom: 0;
+        width: 100%; /* Footer spans full width */
+    }
 
-        /* ======= Main Content Box ======= */
-        main {
-            background: white; /* White background for main coontent */
-            margin: 30px; /* Add space outside the box */
-            padding: 20px; /* Add space inside the box */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Light shadow effect */
-        }
+    footer p {
+        margin: 0; /* Remove default margin */
+        font-size: 14px;
+    }
+</style>
 
-        /* ========= Heading Styling ======== */
-        h1 {
-            color: #4CAF50; /* Green heading color */
-        }
-
-        /* ======== Paragraph Styling ======= */
-        p {
-            font-size: 16px; /* Set font size */
-            line-height: 1.6; /* Increase line spacing for readability */
-        }
-        
-        /* ====== Button Styling ====== */
-        button {
-            background-color: #4CAF50; /* Green button background */
-            border: none; /* Remove button border */
-            color: white; /* White text color */
-            padding: 10px 15px; /* Add space inside button */
-            margin-top: 15px; /* Add space above button */
-            cursor: pointer; /* Pointer cursor on hover */
-            border-radius: 5px; /* Rounded button corners */
-            font-size: 14px; /* Button text size */
-        }
-
-        /* ======= Button Hover Effect ====== */
-        button:hover {
-            background-color: #45a049; /* Darker green on hover */
-        }
-    </style>
-</head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <h1>Welcome to My Homepage</h1>
-    </header>
-
-    <!-- Main Content Section -->
-    <main>
-        <p>This is the homepage of my Django project. You can add more content here.</p>
-        <button>ClickMe</button>
-    </main>
-</body>
-</html>
-    
-
-    
-
-        
-          
-
-
-
-  
+<!-- ========= JavaScript to Display Current Year ======== -->
+<script>
+    // Get current year
+    const currentYear = new Date().getFullYear();
+    // Set it inside the footer span
+    document.getElementById('year').textContent = currentYear;
+</script>
