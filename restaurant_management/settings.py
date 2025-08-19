@@ -1,2 +1,3 @@
-RESTAURANT_NAME = "Bangaram's Delight"
+RESTAURANT_PHONE = "+91 9876543210"
+
 
