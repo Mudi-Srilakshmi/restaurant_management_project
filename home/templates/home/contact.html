@@ -1,88 +1,66 @@
-<!-- ============= contact.html (Contact Us Page) ============= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Sets character encoding -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design -->
-    <title>Contact Us - My Restaurant</title>
-
-    <!-- ========= Internal CSS Styling ========= -->
-    <style>
-        /* ======= Body Styling ======= */
-        body {
-            font-family: Arial, sans-serif; /* Clean and professional font */
-            background-color: #f4f4f9; /* Light background for neat look */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-        }
-
-        /* ========= Header Section ======= */
-        header {
-            background-color: #4CAF50; /* Green header */
-            color: white;
-            text-align: center;
-            padding: 20px 0; /* Vertical padding */
-        }
-
-        /* ========= Main Content Container ====== */
-        .content {
-            max-width: 700px; /* Limit content width */
-            margin: 50px auto; /* Center horizontally and add top margin */
-            padding: 20px;
-            background-color: white; /* White background for contrast */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
-            text-align: center;
-        }
-
-        /* Heading Style */
-        h1 {
-            color: #4CAF50; /* Green heading */
-            margin-bottom: 20px;
-        }
-
-        /* Paragraph / Contact Info Style */
-        p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.6;
-            margin: 10px 0; 
-        }
-
-        /* ============ Footer Section ====== */
-        footer {
-            background-color: #4CAF50; /* Same green as header */
-            color: white; 
-            text-align: center;
-            padding: 15px 0;
-            position: relative; 
-            bottom: 0;
-            width: 100%; 
-            margin-top: 50px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
 </head>
 <body>
+    <h2>Contact Form</h2>
 
-    <!-- ====== Header Section ======== -->
-    <header>
-        <h1>My Restaurant</h1>
-        <p>We'd love to hear from you!</p>
-    </header>
+    <!-- Contact form -->
+    <!-- "method=POST" ensures data is securely submitted to the server -->
+    <form id="contactForm" method="POST">
+    {% csrf_token %} <!-- CSRF token for Django security -->
 
-    <!-- ============= Contact Us content =========== -->
-    <div class="content">
-        <h1>Contact Us</h1>
-        <!-- Hardcoded contact information for now -->
-        <p><strong>Phone:</strong> +91 9876543210</p>
-        <p><strong>Email:</strong> contact@myrestaurant.com</p>
-        <p><strong>Address:</strong> 123 Food Street, Chennai, India</p>
-        <p>For any queries, reservations, or feedback, feel free to reach out to us.</p>
-    </div>
+    <!-- Name field -->
+    <input type="text" id="name" name="name" placeholder="Your Name">
+    <span id="nameError" style="color:red;"></span><br><br>
 
-    <!-- ========== Footer Section ========= -->
-    <footer>
-        &copy; {% now "Y" %} My Restaurant. All rights reserved.
-    </footer>
+    <!-- Email field -->
+    <input type="email" id="email" name="email" placeholder="Your Email">
+    <span id="emailError" style="color:red;"></span><br><br>
 
+    <!-- Message field -->
+    <textarea id="message" name="message" placeholder="Your Message"></textarea><br><br>
+
+    <!-- Submit button -->
+    <button type="submit">Submit</button>
+</form>
+
+<!-- =========== Client-Side Validation Script ========= -->
+<script>
+    // Add event listener: when the form is submitted, run this function
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        let valid = true; // Assume form is valid at first
+        
+        // Clear any old error messages before validating again
+        document.getElementById("nameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        
+        // ------------ Name Validation ------------
+        // Get the value of the "name" field and remove extra spaces
+        let name = document.getElementById("name").value.trim();
+        if (name === "") {
+            // If the name field is empty, show error message
+            document.getElementById("nameError").textContent = "Name is required.";
+            valid = false; // Mark form as invalid
+        }
+
+        // ----------------- Email Validation ---------
+        // Get the value of the "email" field and remove extra spaces
+        let email = document.getElementById("email").value.trim();
+        if (email === "") {
+            // If the email field is empty, show error message
+            document.getElementById("emailError").textContent = "Email is required.";
+            valid = false; // Mark form as invalid
+        }
+
+        // --------- Final Check --------
+        // If form is invalid, prevent it from being submitted to the server 
+        if (!valid) {
+            event.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
