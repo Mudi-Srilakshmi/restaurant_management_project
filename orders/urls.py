@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import menu_api 
+from . import views
 
+# URL patterns for this app
 urlpatterns = [
-    path('api/menu/', menu_api, name='menu-api'),
+    # URL 'menu/' will call the menu_list view
+    path('menu/', views.menu_list, name='menu_list'),
 ]
-    
