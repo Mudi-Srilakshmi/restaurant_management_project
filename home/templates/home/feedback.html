@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Feedback</title>
+</head>
+<body>
+    <h2>Leave Your Feedback</h2>
+
+    <!-- Feedback Form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+</body>
+</html>
