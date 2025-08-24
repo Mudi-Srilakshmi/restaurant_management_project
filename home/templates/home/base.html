@@ -3,11 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Title block allows child templates to override page title -->
     <title>{% block title %}My Restaurant{% endblock %}</title>
-    <!-- Link your CSS here -->
+
+    <!-- CSS file link (optional, but best practice to keep styles separate) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Header Section -->
+    <!-- Header Section (common across all pages) -->
     <header>
         <h1>Welcome to My Restaurant</h1>
     </header>
@@ -15,14 +18,19 @@
     <!-- Main Content Section -->
     <main>
         {% block content %}
-        <!-- Page-specific content will be inserted here -->
+        <!-- Child templates will insert their page-specific content here -->
         {% endblock %}
     </main>
 
     <!-- Footer Section (common across all pages) -->
-    <footer style="text-align:center; margin-top:20px; padding:10px; background:#f2f2f2;">
-        <p> My Restaurant - Serving Happiness</p>
+    <footer class="footer">
+        <p>My Restaurant - Serving Happiness</p>
+
+        <!-- Displaying restaurant opening hours -->
         <p>&copy; {% now "Y" %} My Restaurant. All rights reserved.</p>
     </footer>
 </body>
 </html>
+
+
+   
