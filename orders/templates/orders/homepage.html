@@ -1,0 +1,23 @@
+<!-- orders/templates/orders/homepage.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant homepage</title>
+</head>
+<body>
+    <h1>Welcome to Our Restaurant</h1>
+
+    <h2>Our Locations:</h2>
+    <ul>
+        {% for address in addresses %}
+            <li>
+                <strong>{{ address.name }}</strong><br>
+                {{ address.street }}, {{ address.city }}, {{ address.state }} - {{ address.zipcode }}
+            </li>
+        {% empty %} 
+            <li>No restaurant addresses found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
