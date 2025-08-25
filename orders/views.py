@@ -3,10 +3,8 @@ from .models import MenuItem
 
 def menu_view(request):
     """
-    View to display all menu items along with their uploaded images.
-    - Fetches data from MenuItem model.
-    - Sends it to the template for rendering.
+    Fetches all MenuItem objects from database and passes them to the templates for rendering.
     """
-    items = MenuItem.objects.all() # Get all menu items
+    items = MenuItem.objects.all()
     return render(request, 'orders/menu.html', {'items': items})
     
