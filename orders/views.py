@@ -1,18 +1,24 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import ContactForm
 
-# View to display a list of menu items
-def menu_list(request):
-    # Hardcoded list of menu items with name and price
-    menu_items = [
-        {"name": "Chicken Biryani", "price": 250},
-        {"name": "Paneer Butter Masala", "price": 180},
-        {"name": "Gulab Jamun", "price": 50},
-        {"name": "Mirchi Bajji", "price": 30},
-    ]
+def contact_view(request):
+    """
+    View to handle contact form submission:
+    - If request is POST, validate and save data.
+    - If GET, display an empty form.
+    """
 
-    # Context dictionary to pass data to the template
-    context = {"menu_items": menu_items}
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save() # Save form data to ContactSubmission model
+            return redirect('contact') # Redirect to same page after submission
+    else:
+        form = ContactForm()
 
-    # Render 'menu.html' template with the context
-    return render(request, "menu.html", context)
-   
+    return render(request, 'orders/contact.html', {'form': form})
+    
+
+
+        
+
