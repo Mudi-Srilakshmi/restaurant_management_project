@@ -1,24 +1,12 @@
-from django.shortcuts import render, redirect
-from .forms import ContactForm
+from django.shortcuts import render
+from .models import MenuItem
 
-def contact_view(request):
+def menu_view(request):
     """
-    View to handle contact form submission:
-    - If request is POST, validate and save data.
-    - If GET, display an empty form.
+    View to display all menu items along with their uploaded images.
+    - Fetches data from MenuItem model.
+    - Sends it to the template for rendering.
     """
-
-    if request.method == "POST":
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save() # Save form data to ContactSubmission model
-            return redirect('contact') # Redirect to same page after submission
-    else:
-        form = ContactForm()
-
-    return render(request, 'orders/contact.html', {'form': form})
+    items = MenuItem.objects.all() # Get all menu items
+    return render(request, 'orders/menu.html', {'items': items})
     
-
-
-        
-
