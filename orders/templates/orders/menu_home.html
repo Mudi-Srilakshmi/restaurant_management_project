@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Menu</title>
 </head>
 <body>
-    <!-- page heading -->
     <h1>Our Menu</h1>
 
-    <!-- Loop through menu_items passed from views.py -->
-    <ul>
-        {% for item in menu_items %}
-            <!-- Display each item's name and price -->
-            <li>{{ item.name }} - {{ item.price }}</li>
-        {% endfor %}
-    </u1>
+    <!-- Loop through menu items -->
+    {% for item in items %}
+        <div style="margin-bottom: 20px;">
+            <!-- Display uploaded image -->
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" height="150">
+
+            <!-- Display menu details -->
+            <h2>{{ item.name }}</h2>
+            <p>{{ item.description }}</p>
+            <p><strong>Price:</strong> {{ item.price }}</p>
+        </div>
+    {% endfor %}
 </body>
 </html>
