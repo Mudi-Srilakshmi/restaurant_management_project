@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from .models import MenuItem
+from .models import RestaurantAddress
 
-def menu_view(request):
-    """
-    Fetches all MenuItem objects from database and passes them to the templates for rendering.
-    """
-    items = MenuItem.objects.all()
-    return render(request, 'orders/menu.html', {'items': items})
+def homepage(request):
+    # Get all restaurant addresses from database
+    addresses = RestaurantAddress.objects.all()
+
+    # Pass the addresses to the template
+    context = {
+        'addresses': addresses
+    }
+    return render(request, 'orders/homepage.html', context)
+
     
