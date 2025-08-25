@@ -1,27 +1,19 @@
 from django.db import models
 
-# Django model to store restaurant location details
-class RestaurantLocation(models.Model):
+class ContactSubmission(models.Model):
     """
-    RestaurantLocation model:
-    - Stores address, city, state, and zip code of restaurants.
-    - Useful for keeping track of different restaurant branches or outlets.
+    ContactSubmission model:
+    - Stores basic contact form details.
+    - Fields: name (user's name) and email (user's email address).
+    - Useful for saving user inquiries or contact requests.
     """
 
-    # Street address of the restaurant (max length: 255 characters)
-    address = models.CharField(max_length=255)
+    # Full name of the user submitting the contact form (max length: 100 characters)
+    name = models.CharField(max_length=100)
 
-    # City where the restaurant is located (max length: 100 characters)
-    city = models.CharField(max_length=100)
-
-    # State where the restaurant is located (max length: 100 characters)
-    state = models.CharField(max_length=100)
-
-    # Zip code / postal code of the restaurant's location (max length: 10 characters)
-    zip_code = models.CharField(max_length=10)
+    # Email address of the user submitting the contact form
+    email = models.EmailField()
 
     # String representation of the object (helps when viewing in Django Admin)
     def __str__(self):
-        return f"{self.address}, {self.city}, {self.state} - {self.zip_code}"
-
-
+        return f"{self.name} - {self.email}"
