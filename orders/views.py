@@ -1,14 +1,17 @@
 from django.shortcuts import render
-from .models import RestaurantAddress
+from .models import RestaurantInfo, RestaurantAddress
 
 def homepage(request):
-    # Get all restaurant addresses from database
+    # Fetch restaurant name (option 2)
+    restaurant = RestaurantInfo.objects.first() # Get first entry
+    restaurant_name = restaurant.name if restaurant else "Restaurant"
+
+    # Fetch all restaurant addresses 
     addresses = RestaurantAddress.objects.all()
 
-    # Pass the addresses to the template
     context = {
+        'restaurant_name': restaurant_name,
         'addresses': addresses
     }
-    return render(request, 'orders/homepage.html', context)
-
-    
+    return render(request, 'home/homepage.html', context)
+  
