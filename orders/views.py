@@ -1,17 +1,13 @@
 from django.shortcuts import render
-from .models import RestaurantInfo, RestaurantAddress
+from .models import MenuItem
 
-def homepage(request):
-    # Fetch restaurant name (option 2)
-    restaurant = RestaurantInfo.objects.first() # Get first entry
-    restaurant_name = restaurant.name if restaurant else "Restaurant"
+def menu(request):
+    # Fetch all available menu items
+    items = MenuItem.objects.filter(is_available=True)
 
-    # Fetch all restaurant addresses 
-    addresses = RestaurantAddress.objects.all()
-
+    # Pass them to the template
     context = {
-        'restaurant_name': restaurant_name,
-        'addresses': addresses
+        'items': items
     }
-    return render(request, 'home/homepage.html', context)
-  
+    return render(request, 'home/menu.html', context) # Template path
+    
