@@ -1,6 +1,4 @@
-from django.contrib import admin
-from .models import RestaurantInfo, RestaurantAddress
+from .models import MenuItem
 
-# Register both models to manage from admin
-admin.site.register(RestaurantInfo)
-admin.site.register(RestaurantAddress)
+# Register MenuItem to manage it from admin
+admin.site.register(MenuItem)
