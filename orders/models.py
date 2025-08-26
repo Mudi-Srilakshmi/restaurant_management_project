@@ -1,12 +1,17 @@
 from django.db import models
 
-# Model to represent a menu item
-class MenuItem(models.Model):
-    name = models.CharField(max_length=100) # Name of the menu item
-    description = models.TextField(blank=True, null=True) # Optional description
-    price = models.DecimalField(max_digits=6, decimal_places=2) # Price of the item
-    is_available = models.BooleanField(default=True) # Show only available items
+class RestaurantAddress(models.Model):
+    """
+    Model to store restaurant branch addresses
+    """
+    name = models.CharField(max_length=100) # Branch name
+    street = models.CharField(max_length=200)
+    city = models.CharField(max_length=100)
+    state = models.CharField(max_length=50)
+    zipcode = models.CharField(max_length=10)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True) # Optional for map
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True) # Optional for map
 
     def __str__(self):
-        return self.name
-        
+        return f"{self.name}, {self.city}"
+
