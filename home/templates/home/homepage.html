@@ -15,6 +15,18 @@
             </li>
         {% endfor %}
     </ul>
+
+    <h2>Find Us on Google Maps:</h2>
+    {% for address in addresses %}
+        <!-- Embed Google Map for each address -->
+        <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            src="https://www.google.com/maps?q={{ address.street|urlencode }},{{ address.city|urlencode }},{{ address.state|urlencode }}&output=embed">
+        </iframe>
+    {% endfor %}
 </body>
-</html> 
-        
+</html>
