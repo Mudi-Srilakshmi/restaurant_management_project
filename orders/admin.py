@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MenuItem
+from .models import Contact # Import the Contact model
 
-# Register MenuItem so it can be managed via Django admin
-admin.site.register(MenuItem)
+# Register Contact model so admin can view submissions
+admin.site.register(Contact)
