@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import RestaurantAddress
+from .models import RestaurantInfo, RestaurantAddress
 
-# Register the model to appear in admin panel
+# Register both models to manage from admin
+admin.site.register(RestaurantInfo)
 admin.site.register(RestaurantAddress)
