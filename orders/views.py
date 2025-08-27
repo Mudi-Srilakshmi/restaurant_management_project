@@ -1,37 +1,20 @@
-from django.shortcuts import render, redirect
-from .models import RestaurantInfo, RestaurantAddress, Contact
-from .forms import ContactForm # Import the form
+from django.shortcuts import render
+from .models import RestaurantInfo, RestaurantAddress
 
 def homepage(request):
     """
     Homepage view:
-    - Fetch restaurant name
-    - Fetch all addresses
-    - Handle contact form submission
+    - Fetch restaurant info
+    - Fetch restaurant addresses
+    - send them to template
     """
-    # Restaurant name
-    restaurant = RestaurantInfo.objects.first()
-    restaurant_name = restaurant.name if restaurant else "Restaurant"
-
-    # Restaurant addresses
-    addresses = RestaurantAddress.objects.all()
-
-    # Handle contact form submission
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save() # Save submission to database
-            return redirect('homepage') # Redirect to homepage
-    else:
-        form = ContactForm()
+    restaurant = RestaurantInfo.objects.first() # Get the first restaurant
+    addresses = RestaurantAddress.objects.all() # Get all addresses
 
     context = {
-        'restaurant_name': restaurant_name,
-        'addresses': addresses,
-        'form': form
+        'restaurant': restaurant,
+        'addresses': addresses
     }
 
-    return render(request, 'home/homepage.html', context)
-  
-
+    return render(request, 'orders/homepage.html', context)
     
