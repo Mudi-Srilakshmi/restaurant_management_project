@@ -1,20 +1,12 @@
 from django.db import models
 
-class RestaurantInfo(models.Model):
-    # Restaurant basic info
-    name = models.CharField(max_length=200)
-    description = models.TextField()
-
-    # Opening hours stored as JSON (e.g., {"Mon": "9 AM - 9 PM", "Tue": "Closed"})
-    opening_hours = models.JSONField(default=dict)
+class MenuItem(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField() # Menu item description
+    price = models.DecimalField(max_digits=6, decimal_places=2) # Price
+    image = models.ImageField(upload_to='menu_images/', blank=True, null=True)
+    # New field for image, stored in MEDIA_ROOT/menu_images/
 
     def __str__(self):
         return self.name
-
-class RestaurantAddress(models.Model):
-    restaurant = models.ForeignKey(RestaurantInfo, on_delete=models.CASCADE)
-    address = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.address
         
