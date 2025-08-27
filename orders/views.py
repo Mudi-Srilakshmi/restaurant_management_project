@@ -13,7 +13,8 @@ def homepage(request):
 
     context = {
         'restaurant': restaurant,
-        'addresses': addresses
+        'addresses': addresses,
+        'opening_hours': restaurant.opening_hours if restaurant else {}
     }
 
     return render(request, 'orders/homepage.html', context)
