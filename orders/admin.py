@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Contact # Import the Contact model
+from .models import RestaurantInfo, RestaurantAddress
 
-# Register Contact model so admin can view submissions
-admin.site.register(Contact)
+admin.site.register(RestaurantInfo)
+admin.site.register(RestaurantAddress)
+
