@@ -4,21 +4,25 @@
     <title>Our Menu</title>
 </head>
 <body>
-    <h1>Menu Items</h1>
+    <h1>Menu</h1>
 
-    <!-- Loop through all menu items -->
-    {% for item in items %}
-        <div style="margin-bottom: 20px;">
-            <!-- Display uploaded image -->
-            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" height="150">
+    <ul>
+        {% for item in items %}
+            <li>
+                <h3>{{ item.name }}</h3>
+                <p>{{ item.description }}</p>
+                <p><strong>Price:</strong> {{ item.price }}</p>
 
-            <!-- Display details -->
-            <h2>{{ item.name }}</h2>
-            <p>{{ item.description }}</p>
-            <p><strong>Price:</strong> {{ item.price }}</p>
-        </div>
-    {% empty %}
-        <p>No menu items available.</p>
-    {% endfor %}
+                {% if item.image %}
+                    <!-- Display uploaded image -->
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" width="200" height="150">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>No menu items available.</li>
+        {% endfor %}
+    </ul>
 </body>
-</html>
+</html>   
