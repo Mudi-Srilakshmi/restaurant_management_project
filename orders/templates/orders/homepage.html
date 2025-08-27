@@ -3,21 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Restaurant homepage</title>
+    <title>{{ restaurant.name }}</title>
 </head>
 <body>
-    <h1>Welcome to Our Restaurant</h1>
+    <h1>Welcome to {{ restaurant.name }}</h1>
 
-    <h2>Our Locations:</h2>
+    <h2>Our Address:</h2>
     <ul>
-        {% for address in addresses %}
-            <li>
-                <strong>{{ address.name }}</strong><br>
-                {{ address.street }}, {{ address.city }}, {{ address.state }} - {{ address.zipcode }}
-            </li>
-        {% empty %} 
-            <li>No restaurant addresses found.</li>
+        {% for addr in addresses %}
+            <li>{{ addr.address }}</li>
+        {% empty %}
+            <li>No address available</li>
         {% endfor %}
     </ul>
 </body>
 </html>
+    
