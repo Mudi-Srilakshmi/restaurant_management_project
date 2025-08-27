@@ -1,21 +1,12 @@
 from django.shortcuts import render
-from .models import RestaurantInfo, RestaurantAddress
+from .models import MenuItem
 
-def homepage(request):
+def menu(request):
     """
-    Homepage view:
-    - Fetch restaurant info
-    - Fetch restaurant addresses
+    Menu view:
+    - Fetch all menu items (including images)
     - send them to template
     """
-    restaurant = RestaurantInfo.objects.first() # Get the first restaurant
-    addresses = RestaurantAddress.objects.all() # Get all addresses
-
-    context = {
-        'restaurant': restaurant,
-        'addresses': addresses,
-        'opening_hours': restaurant.opening_hours if restaurant else {}
-    }
-
-    return render(request, 'orders/homepage.html', context)
+    items = MenuItem.objects.all()
+    return render(request, 'orders/menu.html', {'items': items})
     
