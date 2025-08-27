@@ -16,6 +16,15 @@
             <li>No address available</li>
         {% endfor %}
     </ul>
+
+    <h2>Opening Hours:</h2>
+    <ul>
+        {% for day, hours in opening_hours.items %}
+            <li><strong>{{ day }}:</strong> {{ hours }}</li>
+        {% empty %}
+            <li>opening hours not available</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
     
