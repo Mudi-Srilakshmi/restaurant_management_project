@@ -1,7 +1,8 @@
 from django.urls import path
-from . import views
+from .views import contact_view
+from django.shortcuts import render
 
 urlpatterns = [
-    path('menu/', views.menu, name='menu'),
+    path("contact/", contact_view, name="contact"),
+    path("success/", lambda request: render(request, "orders/success.html"), name="contact_success"),
 ]
-  
