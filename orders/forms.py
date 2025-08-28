@@ -1,14 +1,6 @@
 from django import forms
-from .models import Contact
 
-class ContactForm(forms.ModelForm):
-    """
-    Forms for the user to submit name and email
-    """
-    class Meta:
-        model = Contact
-        fields = ['name', 'email'] # Only name and email fields
-        widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Your name'}),
-            'email': forms.EmailInput(attrs={'placeholder': 'Your Email'}),
-        }
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100, label="Your Name")
+    email = forms.EmailField(label="Your Email")
+    message = forms.CharField(widget=forms.Textarea, label="Your Message")
