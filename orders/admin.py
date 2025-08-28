@@ -1,7 +1,5 @@
 from django.contrib import admin
-from .models import RestaurantInfo, RestaurantAddress
+from .models import Restaurant
 
-# Register models in admin so we can add/edit restautant info and addresses
-admin.site.register(RestaurantInfo)
-admin.site.register(RestaurantAddress)
-
+# Register Restaurant model so we can add phone number from admin panel
+admin.site.register(Restaurant)
