@@ -1,30 +1,26 @@
-<!-- orders/templates/orders/homepage.html -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ restaurant.name }}</title>
+    <title>Restaurant Menu</title>
 </head>
 <body>
-    <h1>Welcome to {{ restaurant.name }}</h1>
+    <h1>Menu</h1>
 
-    <h2>Our Address:</h2>
-    <ul>
-        {% for addr in addresses %}
-            <li>{{ addr.address }}</li>
-        {% empty %}
-            <li>No address available</li>
-        {% endfor %}
-    </ul>
+    <!-- Search Bar -->
+    <form method="get" action="">
+        <input type="text" name="q" placeholder="Search menu items..." value="{{ query|default:'' }}">
+        <button type="submit">Search</button>
+    </form>
 
-    <h2>Opening Hours:</h2>
     <ul>
-        {% for day, hours in opening_hours.items %}
-            <li><strong>{{ day }}:</strong> {{ hours }}</li>
+        {% for item in menu_items %}
+            <li>
+                <strong>{{ item.name }}</strong> - {{ item.price }} <br>
+                {{ item.description }}
+            </li>
         {% empty %}
-            <li>opening hours not available</li>
+            <li>No items found.</li>
         {% endfor %}
     </ul>
 </body>
 </html>
-    
