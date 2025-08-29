@@ -5,8 +5,11 @@ class Restaurant(models.Model):
     address = models.TextField()
     phone_number = models.CharField(max_length=15)
     logo = models.ImageField(upload_to='restaurant_logos/', blank=True, null=True)
-    # upload_to folder inside MEDIA directory where images will be stored
-
+    
+    # New fields for information page
+    history =models.TextField(blank=True, null=True)
+    mission = models.TextField(blank=True, null=True)
+    
     def __str__(self):
         return self.name
 
