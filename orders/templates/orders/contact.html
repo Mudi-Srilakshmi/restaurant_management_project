@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Contact Us</title>
+    <title>Contact Form</title>
 </head>
 <body>
-    <h2>Contact Us</h2>
-    <form method="post">
+    <h1>Contact Us</h1>
+    <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Send Message</button>
+        {{ form.as_p }} <!-- Renders the form with validation -->
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
-   
+       
