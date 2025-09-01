@@ -1,24 +1,22 @@
-from django.shortcuts import render
-from .forms import ContactForm # Import the form
+from django.shortcuts import render, redirect
+from .models import Product
 
-# Function-based view to handle the contact form
-def contact_view(request):
-    if request.method == "POST":
-        form = ContactForm(request.POST) # Bind data from request
-        if form.is_valid(): # Django automatically checks email + required fields
-            # Extract cleaned (validated) data
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
+def home_view(request):
+    # Get cart from session, if not exist create empty
+    cart = request.session.get('cart', {})
 
-            # For now, just print in terminal (Later you can save or send email)
-            print("Contact Form Submitted:")
-            print("Name:", name)
-            print("Email:", email)
-            print("Message:", message)
+    # Count total quantity of items in cart
+    total_items = sum(cart.values())
 
-            return render(request, "contact/success.html", {"name": name})
-    else:
-        form = ContactForm()
+    return render(request, 'home.html', {'total_items': total_items})
 
-    return render(request, "contact/contact.html", {"form": form})
+
+def add_to_cart(request, product_id):
+    cart = request.session.get('cart', {})
+
+    # Add product to cart (increase quantity if already exists)
+    cart[product_id] = cart.get(product_id, 0) + 1
+
+    # Save cart back into seesion
+    request.session['cart'] = cart
+    return redirect('home')
