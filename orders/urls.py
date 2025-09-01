@@ -1,11 +1,6 @@
 from django.urls import path
-from .import views
+from .views import contact_view
 
 urlpatterns = [
-
-    # Other URLS...
-
-    # New URL for restaurant info page
-    path('restaurant-info/', views.restaurant_info, name='restaurant_info'),
+    path('', contact_view, name='contact'),
 ]
-    
