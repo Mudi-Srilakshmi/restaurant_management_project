@@ -8,8 +8,13 @@ def home_view(request):
     # Count total quantity of items in cart
     total_items = sum(cart.values())
 
-    return render(request, 'home.html', {'total_items': total_items})
-
+    # Fetch all products from the databse
+    products = Product.objects.all()
+    
+    return render(request, 'home.html', {
+        'total_items': total_items,
+        'products': products
+    })
 
 def add_to_cart(request, product_id):
     cart = request.session.get('cart', {})
