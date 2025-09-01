@@ -1,12 +1,24 @@
 from django.shortcuts import render
+from .forms import ContactForm # Import the form
 
-# New view for restaurant information page
-def restaurant_info(request):
-    # You can add static info here OR fetch from database later if needed
-    context = {
-        'restaurant_name': 'Spicy Delight',
-        'history': 'Our restaurant was established in 2005 with the mission to bring authentic flavours to our customers.',
-        'mission': 'To serve fresh, hygenic, and tasty food at affordable prices while ensuring great customer experience.'
-    }
-    return render(request, 'orders/restaurant_info.html', context)
-    
+# Function-based view to handle the contact form
+def contact_view(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST) # Bind data from request
+        if form.is_valid(): # Django automatically checks email + required fields
+            # Extract cleaned (validated) data
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+
+            # For now, just print in terminal (Later you can save or send email)
+            print("Contact Form Submitted:")
+            print("Name:", name)
+            print("Email:", email)
+            print("Message:", message)
+
+            return render(request, "contact/success.html", {"name": name})
+    else:
+        form = ContactForm()
+
+    return render(request, "contact/contact.html", {"form": form})
