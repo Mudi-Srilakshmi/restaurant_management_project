@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ restaurant.name }} - Homepage</title>
+    <style>
+            .phone-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            background: #f1c40f;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if restaurant %}
+        <h1>Welcome to {{ restaurant.name }}</h1>
+        <div class="phone-number">
+            Call Us: {{ restaurant.phone }}
+        </div>
+    {% else %}
+        <p>No restaurant info available.</p>
+    {% endif %}
+</body>
+</html>
