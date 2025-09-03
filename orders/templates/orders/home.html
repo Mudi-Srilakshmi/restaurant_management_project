@@ -6,35 +6,42 @@
         /* General page styling */
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             margin: 40px;
         }
-
-        /* Heading style */
-        h1 {
-            color: #2c3e50;
+        /* Breadcrumb navigation styling */
+        .breadcrumbs {
+            margin-bottom: 20px; /* space below breadcrumbs */
+            font-size: 14px;
+        }
+        .breadcrumbs a {
+            text-decoration: none; /* remove underline */
+            color: #2980b9; /* blue links */
         }
 
-        /* Tagline style */
-        .tagline {
-            font-size: 22px; /* Make it big enough */
-            font-style: italic; /* Italic for a professional */ 
-            color: #16a085; /* Greenish color for freshness */
-            margin-top: 15px; /* Space above tagline */
-            padding: 10px; /* Inner spacing */
-            background: #ecf0f1; /* Light background */
-            border-left: 5px solid #16a085; /* Left border accent */
-            display: inline-block; /* Keep it neat */
-            border-radius: 5px; /* Rounded edges */
+        .breadcrumbs a:hover {
+            text-decoration: underline; /* underline on hover */
+        }
+        .breadcrumbs span {
+            color: #7f8c8d; /* gray for current page */
         }
     </style>
 </head>
 <body>
-    <!-- Restaurant heading -->
-    <h1>Welcome to our Restaurant</h1>
 
-    <!-- Hard-coded tagline (fixed text, not from database) -->
+    <!-- Breadcrumbs navigation -->
+    <nav class="breadcrumbs">
+        <!-- Hard-coded links for simple navigation -->
+        <a href="/">Home</a> &gt;
+        <span>Homepage</span> <!-- Current page shown in gray -->
+    </nav>
+
+    <!-- page heading -->
+    <h1>Welcome to Our Restaurant</h1>
+
+    <!-- Example tagline -->
     <p class="tagline">"Delicious food, warm ambiance, unforgettable taste!"</p>
+
 </body>
 </html>
-            
+    
+       
