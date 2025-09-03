@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ restaurant.name }} - Homepage</title>
-    <style>
-            .phone-number {
-            font-size: 20px;
-            font-weight: bold;
+   <title>Restaurant Homepage</title>
+   <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 40px;
+        }
+
+        /* Heading style */
+        h1 {
             color: #2c3e50;
-            background: #f1c40f;
-            padding: 10px 15px;
-            border-radius: 8px;
-            display: inline-block;
-            margin-top: 20px;
+        }
+
+        /* Tagline style */
+        .tagline {
+            font-size: 22px; /* Make it big enough */
+            font-style: italic; /* Italic for a professional */ 
+            color: #16a085; /* Greenish color for freshness */
+            margin-top: 15px; /* Space above tagline */
+            padding: 10px; /* Inner spacing */
+            background: #ecf0f1; /* Light background */
+            border-left: 5px solid #16a085; /* Left border accent */
+            display: inline-block; /* Keep it neat */
+            border-radius: 5px; /* Rounded edges */
         }
     </style>
 </head>
 <body>
-    {% if restaurant %}
-        <h1>Welcome to {{ restaurant.name }}</h1>
-        <div class="phone-number">
-            Call Us: {{ restaurant.phone }}
-        </div>
-    {% else %}
-        <p>No restaurant info available.</p>
-    {% endif %}
+    <!-- Restaurant heading -->
+    <h1>Welcome to our Restaurant</h1>
+
+    <!-- Hard-coded tagline (fixed text, not from database) -->
+    <p class="tagline">"Delicious food, warm ambiance, unforgettable taste!"</p>
 </body>
 </html>
+            
