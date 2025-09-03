@@ -1,27 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Product
+from django.shortcuts import render
+from .models import RestaurantInfo
 
-def home_view(request):
-    # Get cart from session, if not exist create empty
-    cart = request.session.get('cart', {})
-
-    # Count total quantity of items in cart
-    total_items = sum(cart.values())
-
-    # Fetch all products from the databse
-    products = Product.objects.all()
-    
-    return render(request, 'home.html', {
-        'total_items': total_items,
-        'products': products
-    })
-
-def add_to_cart(request, product_id):
-    cart = request.session.get('cart', {})
-
-    # Add product to cart (increase quantity if already exists)
-    cart[product_id] = cart.get(product_id, 0) + 1
-
-    # Save cart back into seesion
-    request.session['cart'] = cart
-    return redirect('home')
+def home(request):
+    # get first restaurant entry
+    restaurant = RestaurantInfo.objects.first()
+    return render(request, "home.html", {"restaurant": restaurant})
