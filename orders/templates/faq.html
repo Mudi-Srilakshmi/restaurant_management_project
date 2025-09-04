@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Frequently Asked Questions</title>
+</head>
+<body>
+    <h1>Frequently Asked Questions</h1>
+    <ul>
+        {% for faq in faqs %}
+            <li>
+                <strong>{{ faq.question }}</strong><br>
+                {{ faq.answer }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">Back to Homepage</a>
+</body>
+</html> 
