@@ -1,1 +1,13 @@
-<a href="{% url 'faq' %}">FAQ</a>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Welcome to the Homepage!</h1>
+
+    <!-- Display current date and time -->
+    <p>Current Date and Time: {{ current_time|date:"D, d M Y H:i:s" }}</p>
+
+</body>
+</html>
